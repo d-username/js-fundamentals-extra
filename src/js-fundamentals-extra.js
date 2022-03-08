@@ -8,6 +8,10 @@
 //
 // TODO: write code below
 
+function secondsInHours (hrs){
+  let secondsInMinute = 60*60
+  return hrs * secondsInMinute
+}
 
 
 // MilesTravelled
@@ -23,6 +27,13 @@
 //
 // TODO: write code below
 
+function distanceTravelled (speedPerMilePerHour, minutesTravelled) {
+  travellingTimeInHours = minutesTravelled / 60;
+  distance = speedPerMilePerHour * travellingTimeInHours;
+  solution = Math.ceil(distance);
+  return solution
+}
+
 
 
 // KilometersToMiles
@@ -36,6 +47,13 @@
 // with a reference to your function.
 //
 // TODO: write code below
+
+function kilometersToMiles (km) {
+  mile = km / 1.6;
+  solution = Math.round(mile);
+  return solution;
+}
+
 
 
 
@@ -53,6 +71,13 @@
 //
 // TODO: write code below
 
+function myStr(string) {
+  const marks = [".", "!", "?"];
+  if (marks.includes(string[string.length-1])) {
+    return string[0].toUpperCase() + string.slice(1);
+  }
+  return string[0].toUpperCase() + string.slice(1) + ".";
+}
 
 
 // FileExtension
@@ -67,6 +92,18 @@
 //
 // TODO: write code below
 
+function fileExtension (string) {
+  if (string.includes(".")) {
+  let lastStopIndex = string.lastIndexOf(".");
+  return string.slice(lastStopIndex + 1);
+    } 
+  else {
+    return ""
+  }
+}
+
+
+
 
 
 // Range
@@ -79,6 +116,22 @@
 // with a reference to your function.
 //
 // TODO: write code below
+
+
+function highestLowest(array) {
+  let lowest = array[0];
+  let highest = array[0];
+  for (let i=1; i<array.length; i++){
+    if (array[i]<lowest){
+      lowest=array[i];
+    }
+    if (array[i]>highest){
+      highest=array[i];
+    }
+  }
+let solution = highest - lowest;
+return solution;
+}
 
 
 
@@ -100,6 +153,21 @@
 // TODO: write code below
 
 
+function accountBalance (transactions, start, overDraft){
+  tranSum = 0;
+    for (let i=0; i<transactions.length; i++) {
+      tranSum = tranSum + transactions[i]
+    }
+    
+  let available = start + overDraft;
+  let balance = available + tranSum;
+
+  if (balance < 0){
+    return false
+  }
+  return true
+}
+
 
 // FilmsInGenre
 //
@@ -114,31 +182,43 @@
 //
 // TODO: write code below
 
+function film (array, genre){
+  let chosenFilms = [];
+  for (let i=0; i<array.length; i++){
+    if (array[i].genres.includes(genre)){
+      chosenFilms.push(array[i].name)
+    }  
+  }
+return chosenFilms
+}
+
+
+
 
 
 // TODO: change undefined to be the name of the functions you defined
 module.exports = {
   //SecondsInHours
-  a: undefined,
+  a: secondsInHours,
 
   //MilesTravelled,
-  b: undefined,  
+  b: distanceTravelled,  
 
   //KilometersToMiles,
-  c: undefined, 
+  c: kilometersToMiles, 
 
   //MakeSentence
-  d: undefined, 
+  d: myStr, 
 
   //FileExtension
-  e: undefined,
+  e: fileExtension,
 
   //Range
-  f: undefined,
+  f: highestLowest,
 
   //CheckTransactions
-  g: undefined,
+  g: accountBalance,
 
   //FilmsInGenre
-  h: undefined,
+  h: film,
 }
